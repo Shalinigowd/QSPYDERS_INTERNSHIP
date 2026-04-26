@@ -1,0 +1,602 @@
+
+SQL> create table travel_agent(
+  2  agent_id number(3) primary key,
+  3  agent_name varchar(25) not null unique,
+  4  phone number(10) unique not null,
+  5  email varchar(30) not null unique);
+
+Table created.
+
+SQL> create table travel(t_id number(3) primary key,
+  2  tname varchar(25) not null,
+  3  email varchar(30) not null unique,
+  4  phone number(10) not null unique,
+  5  source varchar(25) not null,
+  6  destination varchar(25) not null,
+  7  tdate date not null,
+  8  price number(8,2) not null,
+  9  agent_id number(3),
+ 10  foreign key(agent_id) references travel_agent(agent_id));
+
+Table created.
+
+SQL> create table aaa as select * from emp;
+
+Table created.
+
+SQL> select * from aaa;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO
+----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800
+        20
+
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300
+        30
+
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500
+        30
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO
+----------
+      7566 JONES      MANAGER         7839 02-APR-81       2975
+        20
+
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400
+        30
+
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850
+        30
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO
+----------
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450
+        10
+
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000
+        20
+
+      7839 KING       PRESIDENT            17-NOV-81       5000
+        10
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO
+----------
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0
+        30
+
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100
+        20
+
+      7900 JAMES      CLERK           7698 03-DEC-81        950
+        30
+
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM
+---------- ---------- --------- ---------- --------- ---------- ----------
+    DEPTNO
+----------
+      7902 FORD       ANALYST         7566 03-DEC-81       3000
+        20
+
+      7934 MILLER     CLERK           7782 23-JAN-82       1300
+        10
+
+
+14 rows selected.
+
+SQL> set lines 1000 pages 1000
+SQL> select * from aaa;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+14 rows selected.
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+AAA                            TABLE
+AGENTS                         TABLE
+BONUS                          TABLE
+DEPT                           TABLE
+EMP                            TABLE
+SALGRADE                       TABLE
+TRAVEL                         TABLE
+TRAVEL_AGENT                   TABLE
+
+8 rows selected.
+
+SQL> select * from aaa;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+14 rows selected.
+
+SQL> desc TRAVEL_AGENT;
+ Name                                                                                                         Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ AGENT_ID                                                                                                     NOT NULL NUMBER(3)
+ AGENT_NAME                                                                                                   NOT NULL VARCHAR2(25)
+ PHONE                                                                                                        NOT NULL NUMBER(10)
+ EMAIL                                                                                                        NOT NULL VARCHAR2(30)
+
+SQL> desc travel;
+ Name                                                                                                         Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ T_ID                                                                                                         NOT NULL NUMBER(3)
+ TNAME                                                                                                        NOT NULL VARCHAR2(25)
+ EMAIL                                                                                                        NOT NULL VARCHAR2(30)
+ PHONE                                                                                                        NOT NULL NUMBER(10)
+ SOURCE                                                                                                       NOT NULL VARCHAR2(25)
+ DESTINATION                                                                                                  NOT NULL VARCHAR2(25)
+ TDATE                                                                                                        NOT NULL DATE
+ PRICE                                                                                                        NOT NULL NUMBER(8,2)
+ AGENT_ID                                                                                                      NUMBER(3)
+
+SQL> alter table travel_agent add agency_name varchar(30) not null unique;
+
+Table altered.
+
+SQL> desc travel_agent;
+ Name                                                                                                         Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ AGENT_ID                                                                                                     NOT NULL NUMBER(3)
+ AGENT_NAME                                                                                                   NOT NULL VARCHAR2(25)
+ PHONE                                                                                                        NOT NULL NUMBER(10)
+ EMAIL                                                                                                        NOT NULL VARCHAR2(30)
+ AGENCY_NAME                                                                                                  NOT NULL VARCHAR2(30)
+
+SQL> alter table travel_agent
+  2  rename column phone into mob_num;
+rename column phone into mob_num
+                    *
+ERROR at line 2:
+ORA-00946: missing TO keyword
+
+
+SQL> rename column phone to mob_num;
+rename column phone to mob_num
+       *
+ERROR at line 1:
+ORA-00903: invalid table name
+
+
+SQL> alter table travel_agent
+  2  rename column phone to mob_num;
+
+Table altered.
+
+SQL> desc travel_agent;
+ Name                                                                                                         Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ AGENT_ID                                                                                                     NOT NULL NUMBER(3)
+ AGENT_NAME                                                                                                   NOT NULL VARCHAR2(25)
+ MOB_NUM                                                                                                      NOT NULL NUMBER(10)
+ EMAIL                                                                                                        NOT NULL VARCHAR2(30)
+ AGENCY_NAME                                                                                                  NOT NULL VARCHAR2(30)
+
+SQL> alter table travel_agent drop column mob_num;
+
+Table altered.
+
+SQL> desc travel_agent;
+ Name                                                                                                         Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ AGENT_ID                                                                                                     NOT NULL NUMBER(3)
+ AGENT_NAME                                                                                                   NOT NULL VARCHAR2(25)
+ EMAIL                                                                                                        NOT NULL VARCHAR2(30)
+ AGENCY_NAME                                                                                                  NOT NULL VARCHAR2(30)
+
+SQL> rename travel_agent to t_agent;
+
+Table renamed.
+
+SQL> select * from travel_agent;
+select * from travel_agent
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from t_agent;
+
+no rows selected
+
+SQL> select emp to employee;
+select emp to employee
+           *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> rename emp to employee;
+
+Table renamed.
+
+SQL> select * from employee;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+14 rows selected.
+
+SQL> rename employee to emp;
+
+Table renamed.
+
+SQL> select * from emm;
+select * from emm
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+14 rows selected.
+
+SQL> select * from aaa;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+14 rows selected.
+
+SQL> truncate table aaa;
+
+Table truncated.
+
+SQL> select * from aaa;
+
+no rows selected
+
+SQL> desc aaa;
+ Name                                                                                                         Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ EMPNO                                                                                                         NUMBER(4)
+ ENAME                                                                                                         VARCHAR2(10)
+ JOB                                                                                                           VARCHAR2(9)
+ MGR                                                                                                           NUMBER(4)
+ HIREDATE                                                                                                      DATE
+ SAL                                                                                                           NUMBER(7,2)
+ COMM                                                                                                          NUMBER(7,2)
+ DEPTNO                                                                                                        NUMBER(2)
+
+SQL> drop table emp;
+
+Table dropped.
+
+SQL> show recyclebin
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME
+---------------- ------------------------------ ------------ -------------------
+EMP              BIN$H1a03kORS8SYeT8iQLajfA==$0 TABLE        2026-03-23:20:44:54
+SQL>
+SQL>
+SQL> flashback table emp to before drop;
+
+Flashback complete.
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+14 rows selected.
+
+SQL> drop table aaa purge;
+
+Table dropped.
+
+SQL> show recyclebin
+SQL> flashback table emp to before drop;
+flashback table emp to before drop
+*
+ERROR at line 1:
+ORA-38305: object not in RECYCLE BIN
+
+SQL> INSERT INTO travel_agent VALUES (101, 'Ravi Kumar', 9876543210, 'ravi@gmail.com');
+
+1 row created.
+
+SQL> INSERT INTO travel_agent VALUES (102, 'Sneha Sharma', 9123456780, 'sneha@gmail.com');
+
+1 row created.
+
+SQL> INSERT INTO travel_agent VALUES (103, 'Arjun Reddy', 9988776655, 'arjun@gmail.com');
+
+1 row created.
+
+SQL> INSERT INTO travel_agent VALUES (104, 'Priya Nair', 9012345678, 'priya@gmail.com');
+
+1 row created.
+
+SQL> set pages 1000 lines 1000
+SQL> select * from travel_agent;
+
+  AGENT_ID AGENT_NAME                     PHONE EMAIL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+---------- ------------------------- ---------- ------------------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+       101 Ravi Kumar                9876543210 ravi@gmail.com                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+       102 Sneha Sharma              9123456780 sneha@gmail.com                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+       103 Arjun Reddy               9988776655 arjun@gmail.com                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+       104 Priya Nair                9012345678 priya@gmail.com                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+
+SQL> INSERT INTO travel VALUES
+  2  (201, 'Rahul', 'rahul@gmail.com', 8888888888, 'Bangalore', 'Delhi', TO_DATE('25-04-2026','DD-MM-YYYY'), 7500.50, 101);
+
+1 row created.
+
+SQL> INSERT INTO travel VALUES
+  2  (202, 'Anjali', 'anjali@gmail.com', 7777777777, 'Mumbai', 'Goa', TO_DATE('15-05-2026','DD-MM-YYYY'), 5500.00, 102);
+
+1 row created.
+
+SQL> INSERT INTO travel VALUES
+  2  (203, 'Vikram', 'vikram@gmail.com', 6666666666, 'Chennai', 'Hyderabad', TO_DATE('10-06-2026','DD-MM-YYYY'), 6200.75, 103);
+
+1 row created.
+
+SQL> INSERT INTO travel VALUES
+  2  (204, 'Neha', 'neha@gmail.com', 9999999999, 'Kolkata', 'Jaipur', TO_DATE('20-07-2026','DD-MM-YYYY'), 8200.00, 104);
+
+1 row created.
+
+SQL> INSERT INTO travel VALUES
+  2  (205, 'Amit', 'amit@gmail.com', 9111111111, 'Pune', 'Ahmedabad', TO_DATE('05-08-2026','DD-MM-YYYY'), 6800.25, 105);
+INSERT INTO travel VALUES
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (HR.SYS_C0011302) violated - parent key not found 
+
+
+SQL> select * from travel;
+
+      T_ID TNAME                     EMAIL                               PHONE SOURCE                    DESTINATION               TDATE          PRICE   AGENT_ID                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+---------- ------------------------- ------------------------------ ---------- ------------------------- ------------------------- --------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+       201 Rahul                     rahul@gmail.com                8888888888 Bangalore                 Delhi                     25-APR-26     7500.5        101                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+       202 Anjali                    anjali@gmail.com               7777777777 Mumbai                    Goa                       15-MAY-26       5500        102                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+       203 Vikram                    vikram@gmail.com               6666666666 Chennai                   Hyderabad                 10-JUN-26    6200.75        103                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+       204 Neha                      neha@gmail.com                 9999999999 Kolkata                   Jaipur                    20-JUL-26       8200        104                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+
+SQL> alter table travel modify tname varchar(10);
+
+Table altered.
+
+SQL> select * from travel;
+
+      T_ID TNAME      EMAIL                               PHONE SOURCE                    DESTINATION               TDATE          PRICE   AGENT_ID                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+---------- ---------- ------------------------------ ---------- ------------------------- ------------------------- --------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       201 Rahul      rahul@gmail.com                8888888888 Bangalore                 Delhi                     25-APR-26     7500.5        101                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       202 Anjali     anjali@gmail.com               7777777777 Mumbai                    Goa                       15-MAY-26       5500        102                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       203 Vikram     vikram@gmail.com               6666666666 Chennai                   Hyderabad                 10-JUN-26    6200.75        103                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       204 Neha       neha@gmail.com                 9999999999 Kolkata                   Jaipur                    20-JUL-26       8200        104                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+SQL> select * from travel agent;
+
+      T_ID TNAME      EMAIL                               PHONE SOURCE                    DESTINATION               TDATE          PRICE   AGENT_ID                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+---------- ---------- ------------------------------ ---------- ------------------------- ------------------------- --------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       201 Rahul      rahul@gmail.com                8888888888 Bangalore                 Delhi                     25-APR-26     7500.5        101                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       202 Anjali     anjali@gmail.com               7777777777 Mumbai                    Goa                       15-MAY-26       5500        102                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       203 Vikram     vikram@gmail.com               6666666666 Chennai                   Hyderabad                 10-JUN-26    6200.75        103                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       204 Neha       neha@gmail.com                 9999999999 Kolkata                   Jaipur                    20-JUL-26       8200        104                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+SQL> 
+SQL> select * from travel_agent;
+
+  AGENT_ID AGENT_NAME                     PHONE EMAIL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+---------- ------------------------- ---------- ------------------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+       101 Ravi Kumar                9876543210 ravi@gmail.com                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+       102 Sneha Sharma              9123456780 sneha@gmail.com                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+       103 Arjun Reddy               9988776655 arjun@gmail.com                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+       104 Priya Nair                9012345678 priya@gmail.com                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+
+SQL> update travel set price=6000 where t_id=202;
+
+1 row updated.
+
+SQL> select * from travel;
+
+      T_ID TNAME      EMAIL                               PHONE SOURCE                    DESTINATION               TDATE          PRICE   AGENT_ID                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+---------- ---------- ------------------------------ ---------- ------------------------- ------------------------- --------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       201 Rahul      rahul@gmail.com                8888888888 Bangalore                 Delhi                     25-APR-26     7500.5        101                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       202 Anjali     anjali@gmail.com               7777777777 Mumbai                    Goa                       15-MAY-26       6000        102                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       203 Vikram     vikram@gmail.com               6666666666 Chennai                   Hyderabad                 10-JUN-26    6200.75        103                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       204 Neha       neha@gmail.com                 9999999999 Kolkata                   Jaipur                    20-JUL-26       8200        104                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+SQL> delete from table where t_id=204;
+delete from table where t_id=204
+            *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> delete from travel where t_id=204;
+
+1 row deleted.
+
+SQL> select * from travel;
+
+      T_ID TNAME      EMAIL                               PHONE SOURCE                    DESTINATION               TDATE          PRICE   AGENT_ID                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+---------- ---------- ------------------------------ ---------- ------------------------- ------------------------- --------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       201 Rahul      rahul@gmail.com                8888888888 Bangalore                 Delhi                     25-APR-26     7500.5        101                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       202 Anjali     anjali@gmail.com               7777777777 Mumbai                    Goa                       15-MAY-26       6000        102                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       203 Vikram     vikram@gmail.com               6666666666 Chennai                   Hyderabad                 10-JUN-26    6200.75        103                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from travel;
+
+      T_ID TNAME      EMAIL                               PHONE SOURCE                    DESTINATION               TDATE          PRICE   AGENT_ID                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+---------- ---------- ------------------------------ ---------- ------------------------- ------------------------- --------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       201 Rahul      rahul@gmail.com                8888888888 Bangalore                 Delhi                     25-APR-26     7500.5        101                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       202 Anjali     anjali@gmail.com               7777777777 Mumbai                    Goa                       15-MAY-26       5500        102                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       203 Vikram     vikram@gmail.com               6666666666 Chennai                   Hyderabad                 10-JUN-26    6200.75        103                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       204 Neha       neha@gmail.com                 9999999999 Kolkata                   Jaipur                    20-JUL-26       8200        104                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+SQL> commit;
+
+Commit complete.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from travel;
+
+      T_ID TNAME      EMAIL                               PHONE SOURCE                    DESTINATION               TDATE          PRICE   AGENT_ID                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+---------- ---------- ------------------------------ ---------- ------------------------- ------------------------- --------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       201 Rahul      rahul@gmail.com                8888888888 Bangalore                 Delhi                     25-APR-26     7500.5        101                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       202 Anjali     anjali@gmail.com               7777777777 Mumbai                    Goa                       15-MAY-26       5500        102                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       203 Vikram     vikram@gmail.com               6666666666 Chennai                   Hyderabad                 10-JUN-26    6200.75        103                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       204 Neha       neha@gmail.com                 9999999999 Kolkata                   Jaipur                    20-JUL-26       8200        104                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+SQL> grant select on travel to scott;
+
+Grant succeeded.
+
+SQL> conn
+Enter user-name: scott
+Connected.
+SQL> select * from hr.travel;
+
+      T_ID TNAME      EMAIL                               PHONE SOURCE                    DESTINATION               TDATE          PRICE   AGENT_ID                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+---------- ---------- ------------------------------ ---------- ------------------------- ------------------------- --------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       201 Rahul      rahul@gmail.com                8888888888 Bangalore                 Delhi                     25-APR-26     7500.5        101                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       202 Anjali     anjali@gmail.com               7777777777 Mumbai                    Goa                       15-MAY-26       5500        102                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       203 Vikram     vikram@gmail.com               6666666666 Chennai                   Hyderabad                 10-JUN-26    6200.75        103                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+       204 Neha       neha@gmail.com                 9999999999 Kolkata                   Jaipur                    20-JUL-26       8200        104                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+SQL> conn
+Enter user-name: hr
+Connected.
+SQL> revoke select on travel from hr;
+revoke select on travel from hr
+                             *
+ERROR at line 1:
+ORA-01749: you may not GRANT/REVOKE privileges to/from yourself 
+
+
+SQL> revoke select on travel from scott;
+
+Revoke succeeded.
+
+SQL> conn
+Enter user-name: scott
+Connected.
+SQL> select * from hr.travel;
+select * from hr.travel
+                 *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> conn
+Enter user-name: hr
+Connected.
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off
+
